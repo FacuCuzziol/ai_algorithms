@@ -15,6 +15,8 @@ It also includes helping functions inside the following modules:
 - **Preprocessing**: Includes helper functions for dataset handling tasks, such as class separation and split into train and test sets, 
 - **Metrics**: Provides helper functions for model evaluation
 
+## Streamlit app
+The Classifier can be accessed at [this streamlit app](https://ai-algorithms-naive-bayes.streamlit.app/) 
 ## How to run
 The main.py file can be executed with streamlit to display the steps that can be followed to run the Classifier. To run this, first install the required libraries with the following command:
 
