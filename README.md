@@ -19,6 +19,9 @@ It also includes helping functions inside the following modules:
 The Classifier can be accessed at [this streamlit app](https://ai-algorithms-naive-bayes.streamlit.app/) 
 ## How to run
 The main.py file can be executed with streamlit to display the steps that can be followed to run the Classifier. To run this, first install the required libraries with the following command:
+```
+pip install -r requirements.txt
+```
 
 (OPTIONAL): Create a virtual enviroment to install these libraries, so as to avoid conflicts with other versions you might already have installed.
 
