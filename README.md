@@ -1,9 +1,14 @@
 # ai_algorithms
-Folders:
+A recopilation of some software made by Facundo Cuzziol and Alejandro Nadal on AI models over time.
 
-Perceptron: handcrafted perceptron for a specific dataset. This small example has yet to be generalize to work with larger datasets
+---
 
-Made in Rust
+# Perceptron:
+Handcrafted perceptron for a specific dataset. This small example has yet to be generalize to work with larger datasets
+
+Made with:
+
+[![L](https://skillicons.dev/icons?i=rust)](https://skillicons.dev)
 
 Code by Alejandro Nadal
 
@@ -14,6 +19,10 @@ Simple NBClassifier module that runs predictions on a given dataset, based on th
 It also includes helping functions inside the following modules:
 - **Preprocessing**: Includes helper functions for dataset handling tasks, such as class separation and split into train and test sets, 
 - **Metrics**: Provides helper functions for model evaluation
+
+Made with:
+
+[![L](https://skillicons.dev/icons?i=python)](https://skillicons.dev)
 
 ## Streamlit app
 The Classifier can be accessed at [this streamlit app](https://ai-algorithms-naive-bayes.streamlit.app/) 
