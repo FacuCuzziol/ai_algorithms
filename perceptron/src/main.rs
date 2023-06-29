@@ -3,34 +3,60 @@ use rand::Rng;
 use rand::seq::SliceRandom;
 use rand::thread_rng;
 use std::fs;
-use std::env;
-// 
+use clap::{Arg, Command };
+
+//
 fn main() {
-    
-    let contents = fs::read_to_string("simple_dataset.csv")
+    let cli = Command::new("Rusted Perceptron")
+        .version("1.0")
+        .author("Alejandro Nadal") 
+        .about("Perceptron implementation in Rust")
+        .arg(Arg::new("alpha")
+            .short('a')
+            .long("alpha")
+            .value_name("ALPHA")
+            .help("Sets the learning rate")
+            .default_value("0.1")
+        )
+        .arg(Arg::new("epochs")
+            .short('e')
+            .long("epochs")
+            .value_name("EPOCHS")
+            .help("Sets the number of epochs")
+            .default_value("100")
+        )
+        .arg(Arg::new("dataset")
+            .short('d')
+            .long("dataset")
+            .value_name("DATASET")
+            .help("Sets the dataset")
+            .default_value("simple_dataset.csv")
+        )
+        .get_matches();
+    // unwrap_or returns the value of alpha if it is defined, otherwise it returns 0.1
+    let alpha = cli.get_one::<String>("alpha").unwrap().parse::<f32>().unwrap();
+    let mut epochs = cli.get_one::<String>("epochs").unwrap().parse::<i32>().unwrap();
+    let dataset = cli.get_one::<String>("dataset").unwrap();
+    let contents = fs::read_to_string(dataset)
         .expect("Something went wrong reading the file");
-    println!("With text:\n{}", contents);
+    println!("Text Input:\n{}", contents);
     // Define an array with 13 elements
     // each element is a vector of 4 elements
     let mut dimensions = 0;
     let dataset = read_dataset(contents, &mut dimensions); 
-    println!("dataset elem 1 val 3 = {}", dataset[1][3]);
-    let alpha = 0.1;
-    let mut epochs = 100;
     // we split the data in train_data, train_Y, test_data and test_Y
     let (train_data, train_y, test_data, test_y) = dataset_split(dataset);
-    println!("Train data {}",train_data[7][2]);
     // W is started randomly
     let mut w = randomly_initialize_weights(dimensions);
     let mut b = vec![0.0;dimensions as usize];
-    println!("w {:?}", w);
+    println!("Starting weights {:?}", w);
     // train
     while epochs > 0{
         train(alpha, &mut w, &mut b, &train_data, &train_y, dimensions); 
         epochs -= 1;
     }
-    //test
-    println!("w {:?}", w);
+    //tesat
+    println!("Weights at the end of training {:?}", w);
     test(test_data, test_y, &mut w, &mut b);
 }
 
